@@ -37,3 +37,8 @@ dependency-check-summary.txt*
 /performance-result.json
 *.vsix
 /scripts/native-dependencies-*
+gen-webpack.config.js
+gen-webpack.node.config.js
+sample-plugins/sample-namespace/plugin-gotd/
+src-gen/
+webpack.config.js
