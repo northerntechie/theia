@@ -35,6 +35,19 @@ Eclipse Theia is an extensible framework to develop full-fledged multi-language 
 
 </div>
 
+## Lome specific instructions
+
+The manual building of the Theia browser example is built using the following terminal commands,
+
+```bash
+$ cd examples/browser
+$ yarn install
+$ yarn build
+$ yarn start --hostname 192.168.159.245 --port 3030
+```
+
+Where the hostname is the ubuntu virtual network adapter if running in a WSL instance.
+
 ## Website
 
 [Visit the Eclipse Theia website](http://www.theia-ide.org) for more information and [the Theia documentation](http://www.theia-ide.org/doc).
