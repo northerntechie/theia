@@ -48,6 +48,13 @@ $ yarn start --hostname 192.168.159.245 --port 3030
 
 Where the hostname is the ubuntu virtual network adapter if running in a WSL instance.
 
+### Dockerfile
+
+Dockerfiles are provided to build the containers that are part of the web-deployed Lome system.  They include,
+
+- `Dockerfile.dev` - a container to provide development tooling
+- `Dockerfile.prod` - a container that provides a minimized container for production deployment
+
 ## Website
 
 [Visit the Eclipse Theia website](http://www.theia-ide.org) for more information and [the Theia documentation](http://www.theia-ide.org/doc).

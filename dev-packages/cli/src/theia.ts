@@ -609,63 +609,63 @@ async function theiaCli(): Promise<void> {
                 });
             }
         })
-        .command<{
-            electronVersion?: string
-            electronDist?: string
-            ffmpegPath?: string
-            platform?: NodeJS.Platform
-        }>({
-            command: 'ffmpeg:replace [ffmpeg-path]',
-            describe: '',
-            builder: {
-                'electronDist': {
-                    description: 'Electron distribution location.',
-                },
-                'electronVersion': {
-                    description: 'Electron version for which to pull the "clean" ffmpeg library.',
-                },
-                'ffmpegPath': {
-                    description: 'Absolute path to the ffmpeg shared library.',
-                },
-                'platform': {
-                    description: 'Dictates where the library is located within the Electron distribution.',
-                    choices: ['darwin', 'linux', 'win32'] as NodeJS.Platform[],
-                },
-            },
-            handler: async options => {
-                const ffmpeg = await import('@theia/ffmpeg');
-                await ffmpeg.replaceFfmpeg(options);
-            },
-        })
-        .command<{
-            electronDist?: string
-            ffmpegPath?: string
-            json?: boolean
-            platform?: NodeJS.Platform
-        }>({
-            command: 'ffmpeg:check [ffmpeg-path]',
-            describe: '(electron-only) Check that ffmpeg doesn\'t contain proprietary codecs',
-            builder: {
-                'electronDist': {
-                    description: 'Electron distribution location',
-                },
-                'ffmpegPath': {
-                    describe: 'Absolute path to the ffmpeg shared library',
-                },
-                'json': {
-                    description: 'Output the found codecs as JSON on stdout',
-                    boolean: true,
-                },
-                'platform': {
-                    description: 'Dictates where the library is located within the Electron distribution',
-                    choices: ['darwin', 'linux', 'win32'] as NodeJS.Platform[],
-                },
-            },
-            handler: async options => {
-                const ffmpeg = await import('@theia/ffmpeg');
-                await ffmpeg.checkFfmpeg(options);
-            },
-        })
+        // .command<{
+        //     electronVersion?: string
+        //     electronDist?: string
+        //     ffmpegPath?: string
+        //     platform?: NodeJS.Platform
+        // }>({
+        //     command: 'ffmpeg:replace [ffmpeg-path]',
+        //     describe: '',
+        //     builder: {
+        //         'electronDist': {
+        //             description: 'Electron distribution location.',
+        //         },
+        //         'electronVersion': {
+        //             description: 'Electron version for which to pull the "clean" ffmpeg library.',
+        //         },
+        //         'ffmpegPath': {
+        //             description: 'Absolute path to the ffmpeg shared library.',
+        //         },
+        //         'platform': {
+        //             description: 'Dictates where the library is located within the Electron distribution.',
+        //             choices: ['darwin', 'linux', 'win32'] as NodeJS.Platform[],
+        //         },
+        //     },
+        //     handler: async options => {
+        //         const ffmpeg = await import('@theia/ffmpeg');
+        //         await ffmpeg.replaceFfmpeg(options);
+        //     },
+        // })
+        //        .command<{
+        //            electronDist?: string
+        //            ffmpegPath?: string
+        //            json?: boolean
+        //            platform?: NodeJS.Platform
+        //        }>({
+        //            command: 'ffmpeg:check [ffmpeg-path]',
+        //            describe: '(electron-only) Check that ffmpeg doesn\'t contain proprietary codecs',
+        //            builder: {
+        //                'electronDist': {
+        //                    description: 'Electron distribution location',
+        //                },
+        //                'ffmpegPath': {
+        //                    describe: 'Absolute path to the ffmpeg shared library',
+        //                },
+        //                'json': {
+        //                    description: 'Output the found codecs as JSON on stdout',
+        //                   boolean: true,
+        //                },
+        //                'platform': {
+        //                    description: 'Dictates where the library is located within the Electron distribution',
+        //                    choices: ['darwin', 'linux', 'win32'] as NodeJS.Platform[],
+        //                },
+        //            },
+        //            handler: async options => {
+        //                const ffmpeg = await import('@theia/ffmpeg');
+        //                await ffmpeg.checkFfmpeg(options);
+        //            },
+        //        })
         .parserConfiguration({
             'unknown-options-as-args': true,
         })

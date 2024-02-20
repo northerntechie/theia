@@ -490,7 +490,7 @@ export class ElectronMainApplication {
      */
     protected attachSaveWindowState(electronWindow: BrowserWindow): void {
         const windowStateListeners = new DisposableCollection();
-        let delayedSaveTimeout: NodeJS.Timeout | undefined;
+        let delayedSaveTimeout: ReturnType<typeof setTimeout>;
         const saveWindowStateDelayed = () => {
             if (delayedSaveTimeout) {
                 clearTimeout(delayedSaveTimeout);

@@ -1,0 +1,55 @@
+# Base image with Node.js and Yarn/NPM
+FROM node:18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json (adjust if using NPM)
+#COPY package*.json ./
+
+# Copy Theia source code
+COPY . .
+
+# Install dependencies
+RUN apk add --update-cache \
+    python3 \
+    python3-dev \
+    py-pip \
+    build-base \
+    libx11-dev \
+    libxkbfile-dev \
+    libsecret-dev \
+    gnu-libiconv-dev \
+    && rm -rf /var/cache/apk/*
+
+RUN yarn install
+
+# Build Theia
+RUN yarn build
+
+# Create a new image based on the builder image
+FROM node:18-alpine AS runtime
+
+# Set working directory
+WORKDIR /app
+
+# Copy built Theia files
+COPY --from=builder /app .
+COPY package.json yarn.lock run.sh /app/
+
+# Expose Theia port (default: 8080)
+EXPOSE 8080
+
+# User workspace volume
+VOLUME ["/workspace"]
+
+
+# Entrypoint to start Theia server
+ENTRYPOINT ["./run.sh"]
+
+# Additional notes:
+# * You might need to adjust the base image version depending on your Theia version requirements.
+# * Replace `package*.json` with your actual file names if using NPM.
+# * Consider adding environment variables for configuration.
+# * You can install additional terminal packages using package managers like `apk add`.
+# * Mount the user workspace volume to a persistent location outside the container for data persistence.
