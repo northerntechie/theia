@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Open a browser and point to //http://192.168.159.245:8080 to access container web app
+# 192.168.159.245 is the WSL Ubuntu side IP address
+#
+docker run -p 8080:8080 lome_editor:latest

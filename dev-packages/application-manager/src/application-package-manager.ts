@@ -193,9 +193,9 @@ export class ApplicationPackageManager {
         if (!theiaElectron.electronVersion || !semver.satisfies(theiaElectron.electronVersion, currentRange)) {
             throw new AbortError('Dependencies are out of sync, please run "install" again');
         }
-        const ffmpeg = await import('@theia/ffmpeg');
-        await ffmpeg.replaceFfmpeg();
-        await ffmpeg.checkFfmpeg();
+        //const ffmpeg = await import('@theia/ffmpeg');
+        //await ffmpeg.replaceFfmpeg();
+        //await ffmpeg.checkFfmpeg();
     }
 
     protected insertAlphabetically<T extends Record<string, string>>(object: T, key: string, value: string): T {
