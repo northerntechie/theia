@@ -27,6 +27,9 @@ RUN yarn install
 # Build Theia
 RUN yarn build
 
+# Install lome backend tools
+# RUN npm install file:///app/dist/lome_backend-0.0.1.tar.gz
+
 # Create a new image based on the builder image
 FROM node:18-alpine AS runtime
 
@@ -37,15 +40,29 @@ WORKDIR /app
 COPY --from=builder /app .
 COPY package.json yarn.lock run.sh /app/
 
+# Install Lome backend python tools
+RUN apk add --update-cache \
+    python3 \
+    py3-pip \
+    bash \
+    && rm -rf /var/cache/apk/*
+RUN python -m venv /app/venv
+RUN source /app/venv/bin/activate
+RUN venv/bin/pip install file:///app/dist/lome_backend-0.0.1.tar.gz
+
 # Expose Theia port (default: 8080)
 EXPOSE 8080
 
 # User workspace volume
 VOLUME ["/workspace"]
 
+# Entrypoint to run Theia server in a bash shell
+ENTRYPOINT ["bash"]
+
+CMD ["bash", "-c", "run.sh"]
 
 # Entrypoint to start Theia server
-ENTRYPOINT ["./run.sh"]
+#ENTRYPOINT ["./run.sh"]
 
 # Additional notes:
 # * You might need to adjust the base image version depending on your Theia version requirements.
