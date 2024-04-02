@@ -12,7 +12,7 @@
 
 ## Description
 
-The `@theia/lome-extension` extension contains language support for the Lome systen
+The `@theia/lome-extension` extension contains fragment index support for the Lome systen
 
 ## Additional Information
 

@@ -1,0 +1,19 @@
+{
+	"name": "lome-completion-extension-server",
+	"description": "Lome completion extension language server in node.",
+	"version": "1.0.0",
+	"author": "Todd Saharchuk",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/northerntechie/lome"
+	},
+	"dependencies": {
+		"vscode-languageserver": "^9.0.1",
+		"vscode-languageserver-textdocument": "^1.0.11"
+	},
+	"scripts": {}
+}
