@@ -61,8 +61,10 @@
     "all": "yarn -s install && yarn -s lint && yarn -s build",
     "browser": "yarn -s --cwd examples/browser",
     "browser-only": "yarn -s --cwd examples/browser-only",
-    "build": "yarn -s compile && yarn -s build:examples",
+    "lome-extension": "yarn -s --cwd extensions/lome-completion-extension",
+    "build": "yarn -s compile && yarn -s build:examples && yarn -s build:extension",
     "build:examples": "yarn browser build && yarn electron build && yarn browser-only build",
+    "build:extension": "yarn lome-extension build",
     "clean": "yarn -s rebuild:clean && yarn -s lint:clean && node scripts/run-reverse-topo.js yarn -s clean",
     "compile": "echo Compiling TypeScript sources... && yarn -s compile:clean && yarn -s compile:tsc",
     "compile:clean": "ts-clean dev-packages/* packages/*",
@@ -116,5 +118,33 @@
     "vscode.github-authentication",
     "vscode.microsoft-authentication",
     "ms-vscode.references-view"
-  ]
+  ],
+  "theiaExtensions": [
+    {
+      "id": "lome-completion-extension",
+      "frontend": {
+        "module": "extensions/lome-completion-extension/lib/client/extension.js"
+      },
+      "backend": {
+        "module": "extensions/lome-completion-extension/lib/server/server.js"
+      }
+    }
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "lomemarkdown",
+        "extensions": [
+          ".md",
+          ".mdl"
+        ],
+        "aliases": [
+          "lome",
+          "Lome",
+          "Lome markdown"
+        ],
+        "configuration": "./extensions/lome-completion-extension/client/language-configuration.json"
+      }
+    ]
+  }
 }

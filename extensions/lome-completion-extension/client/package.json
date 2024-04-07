@@ -21,16 +21,19 @@
 	},
 	"contributes": {
 		"languages": [
-		  {
-			"id": "lomemarkdown",
-			"aliases": [
-				"Lome",
-				"lome",
-				"Lome markdown"
-			],
-			"extensions": [".md", ".mdl"],
-			"configuration": "./language-configuration.json"
-		  }
+			{
+				"id": "lomemarkdown",
+				"aliases": [
+					"Lome",
+					"lome",
+					"Lome markdown"
+				],
+				"extensions": [
+					".md",
+					".mdl"
+				],
+				"configuration": "./language-configuration.json"
+			}
 		]
-	  }
+	}
 }

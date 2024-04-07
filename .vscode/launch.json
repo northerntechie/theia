@@ -76,7 +76,10 @@
         "${workspaceFolder}/examples/browser/lib/**/*.js",
         "${workspaceFolder}/examples/api-samples/lib/**/*.js",
         "${workspaceFolder}/packages/*/lib/**/*.js",
-        "${workspaceFolder}/dev-packages/*/lib/**/*.js"
+        "${workspaceFolder}/dev-packages/*/lib/**/*.js",
+        "${workspaceFolder}/node_modules/@theia/*/lib/**/*.js",
+        "${workspaceFolder}/extensions/*/lib/**/*.js",
+        "${workspaceFolder}/apps/*/src-gen/**/*.js"
       ],
       "smartStep": true,
       "internalConsoleOptions": "openOnSessionStart",

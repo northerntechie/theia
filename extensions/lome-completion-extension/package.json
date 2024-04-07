@@ -16,33 +16,39 @@
 	"engines": {
 		"vscode": "^1.75.0"
 	},
-	"main": "./client/out/extension",
+	"main": "./client/lib/extension",
 	"contributes": {
 		"languages": [
 			{
-			  "id": "lomemarkdown",
-			  "extensions": [
-				".md",
-				".mdl"
-			  ],
-			  "aliases": [
-				"lome",
-				"Lome",
-				"Lome markdown"
-			  ],
-			  "configuration": "./language-configuration.json"
+				"id": "lomemarkdown",
+				"extensions": [
+					".md",
+					".mdl"
+				],
+				"aliases": [
+					"lome",
+					"Lome",
+					"Lome markdown"
+				],
+				"configuration": "./language-configuration.json"
 			}
 		]
 	},
 	"scripts": {
+		"build": "tsc -p .",
+		"clean": "yarn cache clean --all",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"prepare": "yarn run compile && yarn symlink",
+		"symlink": "symlink-dir . ../../plugins/lome-completion-extension",
 		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -b",
-		"watch": "tsc -b -w",
 		"lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
 		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
 		"test": "sh ./scripts/e2e.sh"
 	},
 	"devDependencies": {
+		"@types/vscode": "^1.32.0",
+		"symlink-dir": "latest",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "^18.14.6",
 		"@typescript-eslint/eslint-plugin": "^7.1.0",
