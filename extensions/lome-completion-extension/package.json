@@ -40,7 +40,6 @@
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"prepare": "yarn run compile && yarn symlink",
-		"symlink": "symlink-dir . ../../plugins/lome-completion-extension",
 		"vscode:prepublish": "npm run compile",
 		"lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
 		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
@@ -48,7 +47,6 @@
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.32.0",
-		"symlink-dir": "latest",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "^18.14.6",
 		"@typescript-eslint/eslint-plugin": "^7.1.0",

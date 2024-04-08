@@ -1,9 +1,4 @@
-/* --------------------------------------------------------------------------------------------
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- * ------------------------------------------------------------------------------------------ */
 
-import { getVSCodeDownloadUrl } from '@vscode/test-electron/out/util';
 import * as path from 'path';
 import { workspace, ExtensionContext, languages } from 'vscode';
 import { CompletionRequest } from 'vscode-languageserver-protocol';
@@ -39,7 +34,8 @@ export function activate(context: ExtensionContext) {
 		documentSelector: [{
 			scheme: 'file',
 			pattern: '**/*.{md,mdl}',
-			language: languageId }],
+			language: languageId
+		}],
 		synchronize: {
 			// Notify the server about file changes to '.clientrc files contained in the workspace
 			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
@@ -57,7 +53,7 @@ export function activate(context: ExtensionContext) {
 	// Start the client. This will also launch the server
 	client.start();
 
-	const feature =	client.getFeature(CompletionRequest.method);
+	const feature = client.getFeature(CompletionRequest.method);
 	console.log(`completion feature: ${feature}`);
 }
 
