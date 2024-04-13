@@ -1,0 +1,37 @@
+{
+	"name": "@theia/lome",
+	"version": "0.1.0",
+	"description": "Theia - Lome Extension",
+	"license": "MIT",
+	"keywords": [
+	  "theia-extension"
+	],
+	"dependencies": {
+	  "@theia/core": "latest",
+	  "@theia/editor": "latest",
+	  "@theia/languages": "latest",
+	  "@theia/monaco": "latest"
+	},
+	"devDependencies": {
+	  "rimraf": "latest",
+	  "typescript": "latest"
+	},
+	"files": [
+	  "lib",
+	  "src",
+	  "data",
+	  "snippets"
+	],
+	"scripts": {
+	  "prepare": "yarn run clean && yarn run build",
+	  "clean": "rimraf lib",
+	  "build": "tsc",
+	  "watch": "tsc -w"
+	},
+	"theiaExtensions": [
+	  {
+		"frontend": "lib/browser/lome-frontend-module",
+		"backend": "lib/node/lome-backend-module"
+	  }
+	]
+  }
