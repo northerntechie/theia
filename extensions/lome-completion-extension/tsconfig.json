@@ -1,0 +1,12 @@
+{
+  "extends": "../../configs/base.tsconfig",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "lome-completion-extension/src",
+    "outDir": "lome-completion-extension/lib"
+  },
+  "include": [
+    "lome-completion-extension/src/**/*.ts"
+  ],
+  "references": []
+}

@@ -99,7 +99,8 @@
     "dev-packages/*",
     "examples/*",
     "packages/*",
-    "sample-plugins/*/*"
+    "sample-plugins/*/*",
+    "extensions/lome-completion-extension/*"
   ],
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
@@ -118,17 +119,6 @@
     "vscode.github-authentication",
     "vscode.microsoft-authentication",
     "ms-vscode.references-view"
-  ],
-  "theiaExtensions": [
-    {
-      "id": "lome-completion-extension",
-      "frontend": {
-        "module": "extensions/lome-completion-extension/lib/client/extension.js"
-      },
-      "backend": {
-        "module": "extensions/lome-completion-extension/lib/server/server.js"
-      }
-    }
   ],
   "contributes": {
     "languages": [

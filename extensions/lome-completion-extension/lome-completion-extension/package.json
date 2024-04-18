@@ -1,0 +1,30 @@
+{
+  "name": "lome-completion-extension",
+  "keywords": [
+    "theia-extension"
+  ],
+  "version": "0.0.0",
+  "files": [
+    "lib",
+    "src/**"
+  ],
+  "dependencies": {
+    "@theia/core": "latest"
+  },
+  "devDependencies": {
+    "@theia/ext-scripts": "1.47.0"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn run build",
+    "lint": "theiaext lint",
+    "build": "theiaext build",
+    "watch": "theiaext watch",
+    "clean": "theiaext clean"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/lome-completion-extension-frontend-module",
+      "backend": "lib/node/lome-completion-extension-backend-module"
+    }
+  ]
+}
